@@ -16,8 +16,8 @@ private:
   float gyro_y_;
   float gyro_z_;
 public:
-  void accCalculate();
-  void gyroCalculate();
+  void acc_calculate();
+  void gyro_calculate();
 };
 
 void BMI088_Init();

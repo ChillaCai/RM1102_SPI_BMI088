@@ -63,10 +63,8 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN 0 */
 
 IMU imu;
-uint8_t rx_acc_data[7];
+uint8_t rx_acc_data[6];
 uint8_t rx_gyro_data[6];
-uint8_t rx_acc_range[2];
-uint8_t rx_gyro_range;
 
 /* USER CODE END 0 */
 
@@ -125,15 +123,9 @@ int main(void)
   {
     HAL_IWDG_Refresh(&hiwdg);
 
-    BMI088_accel_write_single_reg(0x41, 0x02);
+    imu.gyro_calculate();
 
-//    BMI088_gyro_read_reg(0x0F, &rx_gyro_range, 1);
-
-//    BMI088_accel_read_reg(0x41, rx_acc_range, 2);
-
-    imu.gyroCalculate();
-
-    imu.accCalculate();
+    imu.acc_calculate();
 
     /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */
